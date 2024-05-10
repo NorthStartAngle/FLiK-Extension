@@ -1,0 +1,239 @@
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    width: 100%;
+    height: 100%;
+    background: #222;
+}
+
+.hidden{
+    display: none;
+}
+
+.link_label {
+    cursor: pointer;
+}
+
+/*********** waiting *************************/
+#waiting_frame {
+    cursor: wait;
+}
+
+#waiting_caption {
+    font-size: 18px;
+    text-align: center;
+    background-color: white;
+    height: 352px;
+    line-height: 352px;
+}
+
+/********** setupwidzard frame **********/
+#wizard_header_logo {
+    width: 80px;
+    height: 40px;
+    background: url(../img/logo.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+#setup_widzard_frame {
+    background-color: white;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: calc(50vh - 200px);
+    box-shadow: 0 10px 10px 5px black;
+    border-radius: 5px;
+}
+
+#setup_widzard_frame_header{
+    display: flex;
+    border-bottom: solid 1px darkgray;
+    background: rgba(255, 32, 82, 0.17);
+    position: relative;
+}
+
+#setup_widzard_frame_caption {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 40px;
+    margin: auto;
+}
+
+#wizard_header_state_wrapper {
+    position: absolute;
+    right: 10px;
+}
+
+#wizard_header_state_wrapper label {
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: 600;
+}
+
+.wizard_body_wrapper{
+    height: 300px;
+    display: flex;
+}
+
+.wizard_body_wrapper table tr {
+    height: 40px;
+}
+
+.wizard_body_wrapper table tr input{
+    height: 26px;
+}
+
+.wizard_body_wrapper table tr #mode_name {
+    background-color: #ddd;
+    color: #333;
+    border: groove;
+}
+
+.wizard_body_wrapper table tr select {
+    height: 32px;
+}
+
+.wizard_body_wrapper table tr select {
+    width: 220px;
+}
+
+.wizard_footer_wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+#account_info_wrapper{
+    width: 300px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+#register_device_wrapper{
+    margin: 10px;
+    font-size: 14px;
+}
+
+#device_list_input_wrapper>[dropdown] {
+    right: 0.3em;
+}
+
+#device_list_input {
+    cursor: default;
+}
+
+#device_list_content {
+    background-color: white;
+    position: absolute;
+    overflow-y: auto;
+    width: 217px;
+    border: 1px solid #6e6e6e;
+    box-shadow: 0 3px 5px 3px #ccc;
+    z-index: 1;
+    font-size: 13px;
+    line-height: 18px;
+    margin-top: -1px;
+    max-height: 151px;
+}
+
+#device_list_input_wrapper.disabled #device_list_content {
+    display: none;
+}
+
+.custom-list-item {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.custom-list-item:hover{
+    background-color: #008cdd !important;
+    color: white;
+}
+
+.custom-list-item.exact-match {
+   background: #54f354;
+   border-bottom: 1px solid #ccc;
+}
+
+.custom-list-item.partial-match {
+    background: #c1ffc1;
+    border-bottom: 1px solid #ccc;
+}
+
+.custom-list-item.id-matched {
+    font-weight: 700;
+}
+
+.custom-list-item.mode {
+    padding-left: 11px;
+}
+
+.description-wrapper label{
+    margin-left: 10px;
+}
+
+#register_device_pane .description-box {
+    width: 120px;
+    height: calc(100% - 40px);
+    border: solid 1px #e0e0e0;
+    margin: 8px 2px;
+    padding: 2px;
+    background-color: #fbfbfb;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+#register_device_pane #register_device_notify {
+    text-align: center;
+    font-size: 15px;
+    line-height: 28px;
+    font-weight: 500;
+}
+
+#user_info_pane{
+    height: 100%;
+    display: flex;
+}
+
+#welcome_wrapper {
+    font-size: 22px;
+    margin: auto;
+    text-align: center;
+}
+
+#wizard_logo{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    background: url(../img/icon128_transparent.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
+.wizard-button{
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
+    border: solid 1px grey;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#register_device:disabled,
+#add_device:disabled{
+    cursor: not-allowed;
+}
+
+#go_signup {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+.error-field {
+    color: red;
+}

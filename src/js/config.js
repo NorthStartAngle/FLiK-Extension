@@ -1,0 +1,45 @@
+export const DATA_Z = {
+    tutorialVideoUrl : 'https://youtu.be/hleuo22Zvzw',
+    OverviewUrl : '',
+    fontfamily : 'SalesforceSansBold',
+    band_color : '#3BAB14',
+    band_label : 'FLiK',
+    layout_preview_activeorder_backcolor : "#e90057",
+    layout_preview_primary_backcolor : "#00b900",
+    trainBand_color : '#f3d3e2',
+    trainText_color : '#e90057',
+    activeOrderOptions :[
+        "Counter clockwise", "Clockwise", "Rows, top to bottom", "Rows, bottom to top", "Columns, left to right", "Columns, right to left"
+    ],
+    flik_type : ["Replace", "Stack", "First tab", "Last tab"],
+    band_type :["Show & fade", "Show until active", "Show when inactive", "No banding"],
+    services : {
+        "Social": ["Facebook", "Twitter", "Tiktok"],
+        "Biz": ["LinkedIn", "Teams", "Slack"],
+        "Chat": ["Skype", "Telegram", "Whatsapp"],
+        "Mail": ["Email", "SMS"],
+        "Articles": ["Medium", "Quora"]
+    },
+    fontFamilies: [
+        "SalesforceSansBold",
+        "Arial",
+        "Helvetica",
+        "Times New Roman",
+        "Times",
+        "Courier New",
+        "Courier",
+        "Verdana",
+        "Georgia",
+        "Palatino",
+        "Garamond",
+        "Bookman",
+        "Comic Sans MS",
+        "Trebuchet MS",
+        "Arial Black",
+        "Impact",
+        "Lucida Sans Unicode",
+        "Tahoma",
+        "Lucida Console"
+    ],
+    deviceTypes : ['desktop', 'laptop', 'tablet', 'phone', 'server', 'TV'],
+};

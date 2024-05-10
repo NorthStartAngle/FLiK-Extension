@@ -1,0 +1,20 @@
+- change the notification way in notify popup.
+- update extract url method when learning.
+- complete url rule grouping algorithm
+
+- group slots using domain, and group operations.
+- complete portal selector
+- make dist result to minimized code
+- make backend on flik.com
+    profile page,
+    passowrd reset function.
+    store images on FTP
+- studying function of the usage of FLiK
+
+#1 is get UI fully working  Devices, friends, groups,  UI alignment.
+#2, Flik sent to Device
+#3  Flik sent to Friend
+#4  Flik sent to group
+#5  Packet/clipboard sending
+
+- initialize the monitor id array when monitor count is changed

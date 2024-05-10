@@ -1,0 +1,110 @@
+CREATE OR REPLACE FUNCTION public.func_create_packet(owner uuid)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$DECLARE
+  urow RECORD;
+  new_packet_id INTEGER;
+BEGIN
+  WITH new_packet AS (
+    INSERT INTO public.packet (type, app_target, state, selection)
+    VALUES (0, 1, 1, 1)
+    RETURNING public.packet.id
+  )
+  SELECT id INTO new_packet_id FROM new_packet;
+
+  FOR urow IN SELECT user_id FROM public.users WHERE user_id != owner LOOP
+    INSERT INTO flik (sender, receiver, packet_id) VALUES (owner, urow.user_id, new_packet_id);
+  END LOOP;
+END;$function$
+
+CREATE OR REPLACE FUNCTION public.func_get_rule_data(uuid uuid)
+ RETURNS json
+ LANGUAGE plpgsql
+AS $function$BEGIN
+    RETURN (SELECT rule_data
+    FROM public.rule
+    WHERE user_id = uuid);
+END;$function$
+
+CREATE OR REPLACE FUNCTION public.func_get_rule_name(uuid uuid)
+ RETURNS text
+ LANGUAGE plpgsql
+AS $function$BEGIN
+    RETURN (SELECT rule_name
+    FROM public.rule
+    WHERE user_id = uuid);
+END;$function$
+
+
+CREATE OR REPLACE FUNCTION public.func_insert_rule(uuid uuid, data json)
+ RETURNS integer
+ LANGUAGE plpgsql
+AS $function$ BEGIN
+    INSERT INTO public.rule (user_id,rule_data)
+         VALUES (uuid,data);
+    RETURN public.rule.id;
+END;
+$function$
+
+
+CREATE OR REPLACE FUNCTION public.func_insert_users()
+ RETURNS trigger
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+AS $function$ BEGIN
+    INSERT INTO public.users (user_id,name,email,joined_date)
+    VALUES (NEW.id,NEW.raw_user_meta_data->'name',NEW.email,NEW.created_at);
+    return NEW;
+  END;$function$
+
+
+CREATE OR REPLACE FUNCTION public.func_temp_isdeleted()
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$begin
+  INSERT INTO public.packet (type, app_target, state, selection)
+    VALUES (0, 1, 1, 1);
+end;$function$
+
+CREATE OR REPLACE FUNCTION public.getuser_role()
+ RETURNS text
+ LANGUAGE plpgsql
+AS $function$begin
+  return current_role;
+end;$function$
+
+
+CREATE OR REPLACE FUNCTION public.userdelete()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+BEGIN
+    DELETE FROM users WHERE users.id = OLD.id;
+    RETURN OLD;
+END $function$
+
+
+CREATE OR REPLACE FUNCTION func_create_packet_target(
+      owner uuid,
+      targets  uuid[],
+      datas json
+    ) RETURNS varchar AS $$
+        DECLARE
+            target  uuid;
+            new_packet_id INTEGER;
+
+        BEGIN
+            WITH new_packet AS (
+              INSERT INTO public.packet (type, app_target, state, selection,data)
+              VALUES (0, 1, 1, 1,datas)
+              RETURNING public.packet.id
+            )
+            SELECT id INTO new_packet_id FROM new_packet;
+
+            FOREACH target IN ARRAY targets
+            LOOP
+                INSERT INTO flik (sender, receiver, packet_id) VALUES (owner, target, new_packet_id);
+            END LOOP;
+            RETURN 'OK';
+        END;
+    $$ LANGUAGE plpgsql;

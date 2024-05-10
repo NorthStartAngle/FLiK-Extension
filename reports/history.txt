@@ -1,0 +1,197 @@
+2023.02.24
+- url grouping algorithm  ( not implemented when edit to baseurl)
+- check synced browser while installing.	( not implemented to choice sync )
+
+2023.02.28
+- add account info panel.
+
+2023.03.12
+- re-configuration project using webpack
+
+2023.03.14
+- import node module for supabase
+- make supabase service class
+
+2023.04.09
+- remove the minimized window mark in popup.
+- change supabase controller engine.
+- remove flikma code
+- add policyQueries.txt
+
+2023.04.10
+- save account info to local storage.
+
+2023.04.12
+- complete import /export rule in supabase
+
+2023.04.17
+- change popup to drop down menu.
+- add portal selector in the popup.
+
+2023.04.19
+- add portal selector in the content.js
+- remove supabase callback.
+
+2023.04.20
+- update user data for portal selector while login/logout
+
+2023.04.21
+- add drag slot and drop on portal in dashboard
+
+2023.04.22
+- update user list of portal selector when new user is added.
+
+2023.04.25
+- add profile page
+
+2023.04.26
+- FLiK enable/disable switch in content popup
+
+2023.04.30
+- show band when sync
+- add disable check in the context popup.
+- select all effect in Learn popup
+- allow edit urls in learn popup
+- show used count in slot selector
+- drag in rule table.
+
+2023.05.03
+- change band configuration
+- add user profile(only text)
+
+2023.05.10 ( v1.0.07 )
+- code is refactoring
+- add password reset function
+
+2023.05.11
+- After change the monitor physically, reconstruct configurations automatically.
+
+2023.05.12
+- add hash function to decide the device layout.
+
+2023.05.17
+- change layout names.
+- resect layouts whenever display configuration is changed.
+
+2023.05.18
+- remove unuse layouts
+- fix the scroll issue of option page's rule table.
+
+2023.05.19
+- fix the slot duplicated issue.
+- fix the coy/paste rule issue.
+- fix scorll issue in the rule table.
+
+2023.05.21
+- fix the issue band is not closed.
+- password reset function.
+- update action state according the current user.
+- fixed the gather issue
+
+2023.05.23
+- add new layouts
+
+2023.05.24
+- add 10 new layouts
+
+2023.05.25
+- change learn algorithm
+
+2023.05.26
+- add slot selector visually in option page
+
+2023.05.28
+- auto order while new installation.
+
+2023.05.29
+- fixed the issue in Notify
+- use defaultSlot when tab is loaded.
+- empty slots after gathering.
+- change some layout ui
+
+2023.05.30
+- fix a issue in authentication.
+- show alert after sync.
+- fix some layout issues.
+- fix a error while open new slot in popup dashboard.
+
+2023.05.31
+- refactor the code for enable / disable FLiK
+
+2023.06.01
+- refactor for export / import profile
+
+2023.06.03
+- change the data structure ( move flikRuleArray to Profile )
+- show portal Selector only when available.
+
+2023.06.05
+- profile preview while import
+- refactor code for draw layout
+
+2023.06.08
+- set import Options( layout | rule | both )
+
+2023.06.09
+- Notify window isses
+
+2023.06.10
+- draw window count indicator in slot
+
+2023.06.11
+- fix hearder part in option page
+2023.06.19
+- change the option page layout
+
+2023.06.27
+- fix copy/paste on option page.
+
+2023.06.29
+- implement the shared profile
+
+2023.07.08
+- implement realtime profile sharing with multiple devices.
+
+2023.07.12
+- change receive options in option page
+
+2023.07.16
+- complete share rule logic
+
+2023.07.27
+- sync device state
+- add develop tab in config page
+
+2023.07.28
+- make device sync stable
+
+2023.08.01
+- control the other device layout
+
+2023.08.05
+- device layout management
+
+2023.08.06
+- retrieve device settings
+- save / restore the device layout
+
+2023.08.09
+- make stable while change the active device
+
+2023.08.12
+- fixed on Notify
+
+2023.08.24
+- select receive device
+
+2023.09.02
+- change drawing logic
+
+2023.09.04
+- fix the Notify popup issue
+
+2023.09.10
+- change base data structure for mode
+
+2023.09.13
+- sync the monitors with supabase

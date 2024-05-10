@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../library/js/jquery-1.12.3.min.js"></script>
+    <script src="../library/js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/flik.css" />
+    <link rel="stylesheet" href="../css/splash.css" />
+</head>
+
+<body>
+    <div id="setup_widzard_frame">
+        <div id="setup_widzard_frame_header">
+            <div id="wizard_header_logo"></div>
+            <label id="setup_widzard_frame_caption">Login</label>
+            <div id="wizard_header_state_wrapper">
+                <label id="use_offline" class="link_label" title="Use offline. When offline, you can only interact with your current device.">Use offline</label>
+            </div>
+        </div>
+        <div id="login_pane">
+            <div class="wizard_body_wrapper">
+                <div id="wizard_logo"></div>
+                <div id="account_info_wrapper">
+                    <table>
+                        <tr style="height: 120px;">
+                            <td style="width: 80px;"> Email</td>
+                            <td> <input id="user_mail" placeholder="Email"/> </td>
+                        </tr>
+                        <tr style="height: 120px;">
+                            <td> Password</td>
+                            <td> <input id="user_password" placeholder="Password" type="password"/> </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <hr style="width: calc(100% - 2px); margin: 0px;">
+            <div class="wizard_footer_wrapper">
+                <div id="go_signup" class="link_label" title="Create account">Create account</div>
+                <button class="wizard-button" id="login" title="login">Log in</button>
+            </div>
+        </div>
+        <div id="signup_pane">
+            <div class="wizard_body_wrapper">
+                <div id="wizard_logo"></div>
+                <div id="account_info_wrapper">
+                    <table>
+                        <tr style="height: 60px;">
+                            <td style="width: 90px;"> Username</td>
+                            <td> <input id="account_name" placeholder="User name"/> </td>
+                        </tr>
+                        <tr style="height: 60px;">
+                            <td> Email</td>
+                            <td> <input id="account_mail" placeholder="Email"/> </td>
+                        </tr>
+                        <tr style="height: 60px;">
+                            <td> Password</td>
+                            <td> <input id="account_password" placeholder="Password" type="password"/> </td>
+                        </tr>
+                        <tr style="height: 60px;">
+                            <td> Confirm</td>
+                            <td> <input id="account_password_confirm" placeholder="Confirm" type="password"/> </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <hr style="width: calc(100% - 2px); margin: 0px;">
+            <div class="wizard_footer_wrapper">
+                <button class="wizard-button" id="signup">Signup</button>
+                <button class="wizard-button" id="back_login">Back</button>
+            </div>
+        </div>
+        <div id="register_device_pane">
+            <div class="wizard_body_wrapper">
+                <div id="register_device_wrapper">
+                    <table>
+                        <tr id="register_tip" style="vertical-align: super;">
+                            <td colspan="2">
+                                <div style="font-weight: 500; margin: 5px; width: 290px">
+                                    To use Flik, you need to add tell it about your devices. Fill in the device name, a type (laptop/desktop) and a mode.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="registered_devices" style="height: 120px; vertical-align: super;">
+                            <td style="width: 80px;">Devices</td>
+                            <td>
+                                <div id="device_list_input_wrapper" class="dropdown-wrapper">
+                                    <input id="device_list_input" type="text" style="width: 210px;" readonly/><span dropdown>&#9660;</span>
+                                    <div id="device_list_content"></div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width: 80px;" id="device_name_caption"> Device name</td>
+                            <td> <input id="device_name" placeholder="required" style="width:210px"/> </td>
+                        </tr>
+                        <tr>
+                            <td> Device type</td>
+                            <td> <select id="device_types"></select></td>
+                        </tr>
+                        <tr>
+                            <td id="mode_name_caption"> Mode name</td>
+                            <td> <input id="mode_name"  style="width:210px;" readonly/></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="description-wrapper">
+                    <label>selected device</label>
+                    <div id="device_description" class="description-box"></div>
+                </div>
+                <div class="description-wrapper">
+                    <label>my device</label>
+                    <div id="my_device_description" class="description-box"></div>
+                </div>
+            </div>
+            <hr style="width: calc(100% - 2px); margin: 0px;">
+            <div class="wizard_footer_wrapper">
+                <div style="width: calc(100% - 246px);">
+                    <div id="register_device_notify">Matching device detected!</div>
+                </div>
+                <div>
+                    <button class="wizard-button" id="add_device" style="width: 126px;">Add as new mode</button>
+                    <button class="wizard-button" id="register_device">Connect</button>
+                </div>
+            </div>
+        </div>
+        <div id="welcome_pane">
+            <div class="wizard_body_wrapper">
+                <div id="welcome_wrapper">
+                    Thank you for joining the Flik community.
+                </div>
+            </div>
+            <hr style="width: calc(100% - 2px); margin: 0px;">
+            <div class="wizard_footer_wrapper">
+                <button class="wizard-button" id="welcome_goto_option">Options</button>
+                <button class="wizard-button" id="welcome_close">Close</button>
+            </div>
+        </div>
+        <div class ="hidden" id="waiting_frame">
+            <div id="waiting_caption">Connecting...</div>
+        </div>
+    </div>
+
+    <script src="../js/splash.js"></script>
+</body>
+
+</html>

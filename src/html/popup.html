@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="../library/js/jquery-1.12.3.min.js"></script>
+    <script src="../library/js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/flik.css" />
+    <link rel="stylesheet" href="../css/popup.css" />
+</head>
+
+<body>
+    <div id="menu_frame">
+        <div class="menu-wrapper">
+            <!-- <button class="menuItem" id="cleanupBtn" title="Sync all windows with FLiK slots">Sync</button> -->
+            <button class="menuItem" id="syncBtn" title="Sync all tabs with FLiK slots">Sync</button>
+            <button class="menuItem" id="learnBtn" title="Analyze all windows and add to rule">Learn</button>
+            <button class="menuItem" id="ConfigBtn" title="Config FLiK" >Config</button>
+            <button class="menuItem" id="DashboardBtn" title="Dashboard">Dashboard</button>
+            <button class="menuItem" id="gatherBtn" title="Gather all tabs into the primary monitor">Gather</button>
+            <button class="menuItem" id="loginBtn" title="Login / Signup">Log in / Sign up</button>
+            <button class="menuItem" id="logoutBtn" title="Logout">Log out</button>
+        </div>
+    </div>
+    <div class ="hidden" id="waiting_frame">
+        <div id="waiting_caption">loading...</div>
+    </div>
+    <div class="hidden" id="dashboard_frame">
+        <div class="Header-Bar">
+            <div class="Tool-Bar">
+                <div id="mode_wrapper">
+                    <label for="mode">Mode&nbsp;</label>
+                    <select id="mode"></select>
+                </div>
+                <div id="winddow_filter_wrapper">
+                    <input id="window_filter"/>
+                    <span id="clear_window_filter">&times;</span>
+                </div>
+            </div>
+            <div class="User-Image" id="User-Image" title="Not Logged">
+                <svg class="svg-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M723.43 508.6c-54.123 47.75-125.977 77.056-205.163 77.056-80.364 0-153.4-30.259-207.765-79.421C184.05 539.325 105.81 652.308 105.81 787.277v68.782c0 160.968 812.39 160.968 812.39 0v-68.782c-0.005-131.415-74.22-242.509-194.77-278.677z m-205.163 28.13c140.165 0 254.095-109.44 254.095-244.64S658.668 47.218 518.267 47.218c-139.93 0-253.855 109.675-253.855 244.874 0 135.204 113.925 244.639 253.855 244.639z m0 0"/></svg>
+            </div>
+        </div>
+        <div class="Layout-Bar">
+            <div class="monitor-layout" id="popupLayoutPreview"></div>
+            <!-- <div class="portal-layout" id="portalLayoutContainer">
+                <div class = "portal-indexContainer">
+                    <div class = "portal-goback">
+                    </div>
+                    <div class = "portal-indexBox">
+                    </div>
+                </div>
+                <div class = "portal-contentBox"></div>
+            </div> -->
+        </div>
+        <!-- <br /> -->
+        <div class="Status-Bar">
+            <input type="button" id="TutorialView" class="button-sub1" value="Getting Started">
+            <input type="button" id="OverView" class="button-sub2" value="Overview">
+            <label id="flikCount" class="FlikCnt"></label>
+        </div>
+        <div class="Footer-Bar">
+            <div class="Footer-Text">
+                <div><label id="version"></label>&nbsp;&nbsp;Copyright 2020-2023</div>
+                <div> All rights reserved. Patent Pending</div>
+            </div>
+            <div id="dashboard_footer_logo"></div>
+        </div>
+    </div>
+    <div class="hidden" id="learn_frame">
+        <div class="learn-frame-caption">Select URLs to add to FLiK rules.</div>
+        <div class="learn-frame-body">
+            <div class="learn-frame-urls" id="learn-frame-urls"></div>
+        </div>
+        <div class="learn-frame-footer">
+            <button id="selectAll" style="font-size: 11px; padding: 0px;">Seclect All</button>
+            <button id="unselectAll" style="font-size: 11px; padding: 0px;">Uneclect All</button>
+            <button id="addtoRule">Add</button>
+            <!-- <button id="cancelLearn">Cancel</button> -->
+        </div>
+    </div>
+    <div class="hidden" id="profile_frame">
+        <div id="profile_frame_titlebar">
+            <h1 class ="profile-h1">
+
+            </h1>
+            <span class="space"></span>
+            <button class="button-roundborder" id="profile_save">Save</button>
+        </div>
+
+        <div class ="profile-photo" id ="profile-banner-frame"   style = "width:100%;height:145px;">
+            <img class ="profile-photo-src" id="profile-banner">
+            <div class ="profile-photo-tool">
+                <button class = "photo-tool" id="choose_banner_photo" value="choose"></button>
+                <button class = "photo-tool" id="remove_banner_photo" value="remove"></button>
+
+                <form id="banner-submit" action="http://localhost:8000/image/upload" method="POST" enctype="multipart/form-data" hidden>
+                    <input type="file" id="choose_banner_file" name="image" accept="image/*"  />
+                </form>
+
+            </div>
+            <div class ="lazy" id="banner-lazy"></div>
+        </div>
+
+        <div id="profile_frame_header">
+            <div class ="profile-photo" id="profile-photo-frame">
+                <img class ="profile-photo-src" id="profile-userphoto" style = "border-radius: 50%;">
+                <button class = "photo-tool" id="choose_photo" value="choose"></button>
+                <input type="file" id="choose_photo_file" name="myfile2" hidden accept="image/*" value='Choose Photo'>
+                <div class ="lazy" id="photo-lazy"></div>
+            </div>
+            <h1 id="profile-header-name" style ="margin-left:200px;"></h1>
+        </div>
+        <div class="profile_item" id="profile_frame_name">
+            <h4>Name</h4>
+            <div class="input-textbox">
+                <input type="text" id="profile_name" value = "donato">
+            </div>
+        </div>
+        <div class="profile_item" id="profile_frame_note">
+            <h4>Bio</h4>
+            <div class="input-textbox">
+                <textarea rows = "3" cols = "50" name = "description" id="profile_note" style="resize: none;"></textarea>
+            </div>
+        </div>
+        <div class="profile_item" id="profile_frame_location">
+            <h4>Location</h4>
+            <div class="input-textbox">
+                <input type="text" id="profile_location" value = "Wisconsin, USA, Earch, Milky way, Laniakea Superculster">
+            </div>
+        </div>
+        <div class="profile_item" id="profile_frame_website">
+            <h4>Website</h4>
+            <div class="input-textbox">
+                <input type="text" id="profile_website" value = "http://donatodiorio.com">
+            </div>
+        </div>
+    </div>
+    <script src="../js/popup.js"></script>
+</body>
+
+</html>

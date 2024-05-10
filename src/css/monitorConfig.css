@@ -1,0 +1,129 @@
+.useSwitch {
+    margin: auto auto auto 0px;
+}
+
+.Monitor-Config-Wrapper{
+    position: relative;
+}
+
+.Monitor-Config-Pane{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 435px;
+    height: 379px;
+}
+
+.Monitor-Config-Header,
+.Monitor-Config-Footer {
+    height: 62px;
+    line-height: 62px;
+    font-size: 1.5em;
+    color: white;
+    background: #2f2f2f;
+    display: flex;
+    padding-right:10px;
+    justify-content: space-around;
+}
+
+.Monitor-Config-Body {
+    height: 255px;
+    background: #E80058;
+}
+
+.PrimaryCaption {
+    color: #28a745;
+    text-align: center;
+    padding-left: 17px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 62px;
+}
+
+.Monitor-Config-Body .monitorID_edit {
+    position: fixed;
+    margin-left: 316px;
+    margin-top: 29px;
+}
+
+.Monitor-Config-Body .monitorID_frame {
+    width: 391px;
+    height: 204px;
+    text-align-last: center;
+    line-height: 180px;
+    border-radius: 12px;
+    border: 3px groove rgb(255 255 255);
+    margin-top: 20px;
+    margin-left: 19px;
+}
+
+.monitorIDCaption {
+    font-size: 190px;
+    font-weight: bolder;
+    color: white;
+}
+
+.activateAll {
+    margin-left: 16px;
+}
+
+.activateAll .switch {
+    margin-top: 25px;
+    margin-left: 15px;
+}
+
+.logoCaption {
+    width: 100px;
+    color: #f73d83;
+    font-size: 46px;
+    line-height: 62px;
+    font-weight: 400;
+    margin-left: 12px;
+}
+
+.Monitor-Config-CloseBtn {
+    font-size: 18px;
+    text-align: center;
+    background-color: #666;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 96px;
+    height: 40px;
+    line-height: 18px;
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+#activateAllSwitch {
+    font-size: 18px;
+    text-align: center;
+    background-color: #666;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    height: 40px;
+    line-height: 18px;
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+.Monitor-Config-CloseBtn:active {
+    background-color: #e80058;
+    box-shadow: 0 1px #666;
+    transform: translateY(4px);
+}
+
+.Monitor-Config-CloseBtn:hover {
+    background-color: #e80058;
+}
+
+#activateAllSwitch:active {
+    background-color: #e80058;
+    box-shadow: 0 1px #666;
+    transform: translateY(4px);
+}
+
+#activateAllSwitch:hover {
+    background-color: #e80058;
+}

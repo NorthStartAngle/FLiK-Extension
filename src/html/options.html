@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FLiK Options</title>
+    <link href="../library/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../library/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="../library/css/select.dataTables.min.css" rel="stylesheet" />
+    <link href="../library/css/rowReorder.dataTables.min.css" rel="stylesheet" />
+    <link href="../library/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="../library/css/spectrum.css" rel="stylesheet" type="text/css">
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/flik.css" rel="stylesheet" />
+    <link href="../css/option.css" rel="stylesheet" />
+
+    <script src="../library/js/jquery-1.12.3.min.js"></script>
+    <script src="../library/js/jquery.dataTables.min.js"></script>
+    <script src="../library/js/dataTables.bootstrap.min.js"></script>
+    <script src="../library/js/dataTables.select.min.js"></script>
+    <script src="../library/js/dataTables.buttons.min.js"></script>
+    <script src="../library/js/dataTables.rowReorder.min.js"></script>
+    <script src="../library/js/buttons.html5.min.js"></script>
+    <script src="../library/js/jquery-ui.min.js"></script>
+    <script src="../library/js/spectrum.js"></script>
+    <script src="../library/js/gridstack.all.js"></script>
+</head>
+
+<body>
+    <div id="mainWrapper">
+        <div id="lockScreen" style="display: none;"></div>
+        <div id="headerWrapper">
+            <div id="warningBar" style="display: none;">
+                <div id="loginWarningBar" style="display: none;">
+                    Flik not active. please <a id="goto_flik_login"> login</a>
+                </div>
+                <div id="lockWarningBar" style="display: none;">
+                    Editing is locked by: <span id="locker_device"></span>. Elapsed at : <span id="locked_Elapsed_time"> 00:00:00 </span>
+                </div>
+            </div>
+            <div id="captionBar">
+                <div id="deviceCaptionWrapper">
+                    <label id="currentAccount_name" style="margin-left:20px;"></label>
+                    <label style="font-size: 26px;"> / </label>
+                    <label id="mainDevice_name"></label>
+                    <label id="currentDevice_caption" style="margin-left:50px;"></label>
+                </div>
+                <div style="display: flex;">
+                    <div id="syncTimeWrapper">
+                        <div id="notify_sync_time" style="display: none;">Since last sync: <span id="synced_elapsed_time"></span></div>
+                    </div>
+                    <div id="enableSwitchWrapper">
+                        <span>Automatic FLiKs</span>
+                        <label id="automaticSwitchWrapper" class="switch">
+                            <input type="checkbox" id="enableSwitch" checked />
+                            <span class="slider round" style="z-index: 11;"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="profileBar">
+                <div id="device_list_wrapper">
+                    <label title="Selects device to show layout" class="main-caption">Device view&nbsp;</label>
+                    <div id="device_list_input_wrapper" class="dropdown-wrapper">
+                        <input id="device_list_input" type="text" readonly/><span dropdown>&#9660;</span>
+                        <div id="device_list_content" class="custom-list-content"></div>
+                    </div>
+
+                    <button id="filk_receive_option" class="header-button" title="Receiving devices ON/OFF">Receiving devices</button>
+                    <div id="receiver_option_form">
+                        <div class="receiver-options">
+                            <label style="margin-bottom:10px;">Receiver rule &nbsp;</label>
+                            <div class="optionDeviceWrapper">
+                                <label for="option_rule_all_devices" class="optionRadio"> <input id="option_rule_all_devices" type="radio" name="openDevice" value="all"/> Receive on all devices </label>
+                                <label for="option_rule_special_devices" class="optionRadio"> <input id="option_rule_special_devices" type="radio" name="openDevice" value="spec"> Receive on specific devices </label>
+                            </div>
+                        </div>
+                        <div>
+                            <div id="receiver_rule_devices_wrapper"></div>
+                            <div id="receiver_rule_devices_notify">Devices selected will receive incoming Flik's.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mode_wrapper">
+                    <div id="mode_name_wrapper">
+                        <label class="second-caption">Mode</label>
+                        <div id="mode_list_input_wrapper" class="dropdown-wrapper">
+                            <input id="mode_list_input" type="text" readonly/><span dropdown>&#9660;</span>
+                            <div id="mode_list_content" class="custom-list-content"></div>
+                        </div>
+                        <span id="edit_mode"><img src="../img/black_pencil.png" alt="+" width="16" height="16"></span>
+
+                        <div id="mode_option_form">
+                            <div class="mode_option_content">
+                                <label for="mode_input">modes&nbsp;</label>
+                                <select id="mode_input"></select>
+                            </div>
+                            <div id="mode_preview_pane"></div>
+                        </div>
+                    </div>
+                    <button id="devices_in_layout" class="header-button" title="Devices in layout">Devices in layout</button>
+                    <div id="devices_in_layout_form">
+                        <div id="device_items_caption"><label>device</label><label>order</label></div>
+                        <div id="device_list_for_layout"></div>
+                        <div id="device_in_layout_description">To change the order of devices (1, 2, etc), uncheck and recheck in the order you prefer.</div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="monitor_ordering" class="main-caption">Monitor order</label>
+                    <select id="monitor_ordering"></select>
+                </div>
+
+            </div>
+            <div id="optionLayoutPreview" class="grid-stack"></div>
+            <div id="tabButtonsWrapper">
+                <label class="tab-button active" id="FLiKs_tab">Rules</label>
+                <label class="tab-button" id="DeviceLayout_tab">Layout</label>
+                <label class="tab-button" id="Targets_tab">Targets</label>
+                <label class="tab-button" id="Settings_tab">Settings</label>
+                <label class="tab-button" id="Develop_tab">Develop</label>
+                <hr>
+            </div>
+        </div>
+
+        <div id="bodyWrapper">
+            <div id="contentWrapper">
+                <div id="FLiKs">
+                    <div id="rulesButtonWrapper">
+                        <button class="tableButton distBtn" title="dsitribute rule for all rows">Distribute</button>
+                        <button class="tableButton downBtn" title="move selected row down">▼</button>
+                        <button class="tableButton upBtn" title="move selected row up">▲</button>
+                        <button class="tableButton duplicateBtn" title="make copy selected row">Make copy</button>
+                        <button class="tableButton cleanBtn" title="delete all rows">Clear</button>
+                        <button class="tableButton deleteBtn" title="delete selected row">Delete</button>
+                        <button class="tableButton dropdown">v</button>
+                        <button class="tableButton addBtn" title="add new row">Add</button>
+                        <button class="tableButton pasteBtn" title="add rows from clipboard">Paste</button>
+                        <button class="tableButton copyBtn" title="copy all rows to clipboard">Copy</button>
+                    </div>
+                    <div id="flikNotifyPane">
+                        <span>
+                            <input id="rule-filter"/>
+                            <span id="clear-rule-filter">&times;</span>
+                        </span>
+                        <span>
+                            <label for="default-slot-selector" style ="margin-left: 60px;">Default slot for new URLs</label>
+                            <select id="default-slot-selector">
+                                <option>off</option>
+                            </select>
+                        </span>
+                        <span id="flikNotifyText"></span>
+                    </div>
+                    <div id="flikDataTableContainer" style="margin:0;padding:0px;">
+                        <table id="fliksDataTable" class="nowrap table table-striped table-bordered table-hover table-condensed" style="table-layout: fixed; word-wrap:break-word;" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="width:25px"> </th>
+                                    <th style="width:auto">FLiK rule</th>
+                                    <th style="width:30px">Slot</th>
+                                    <th style="width:65px">Handling</th>
+                                    <th style="width:120px">Banding</th>
+                                    <th style="width:100px">Band label</th>
+                                    <th style="width:40px">Color</th>
+                                </tr>
+                            </thead>
+                            <textarea style="left: -1000px;position: absolute;" id="clipboardBox"></textarea>
+                        </table>
+                    </div>
+                </div>
+                <div id="DeviceLayout" style="display: none;">
+                    <div id="setup-button-wrapper">
+                        <button id="setupMonitorBtn">Setup monitors</button>
+                    </div>
+                    <table class="Table-Config" id="monitorsConfigTable">
+                        <thead>
+                            <tr>
+                                <th style="Width:fit-content; width:160px">
+                                    <label class="ConfigTableHeader">Monitor<br/>Order & ID</label>
+                                </th>
+                                <th style="width:620px">
+                                    <label class="ConfigTableHeader">Layout</label>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="monitorsTBody"></tbody>
+                    </table>
+                </div>
+                <div id="Targets" style="display: none;">
+                    <div class="buttonsWrapper">
+                        <button class="tableButton deleteBtn" title="delete selected row">Delete</button>
+                        <button class="tableButton receiveOptionBtn" title="set FLiK receiver options">Options</button>
+                    </div>
+                    <table id="targetDataTable" class="nowrap table table-striped table-bordered table-hover table-condensed" style="table-layout: fixed;word-wrap:break-word;" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th style="width:28px"> </th>
+                                <th style="width:220px">Service</th>
+                                <th style="width:auto">FLiKee</th>
+                                <th style="width:60px">Slot</th>
+                                <th style="width:120px">Handling</th>
+                                <th style="width:75px">Group</th>
+                                <th style="width:75px">Favorite</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div id="Settings" style="display:none;">
+                    <div class="Training-Bar">
+                        <div class="Training-Wrapper">
+                            <label class="Training-Caption">Training wheels</label>
+                            <label class="Training-Switch switch">
+                                <input type="checkbox" id="trainingSwitch" checked />
+                                <span class="slider round"></span>
+                            </label>
+                            <label class="Training-Text">&nbsp;&nbsp;When training wheels are on, FLiK will give you tips when FLiK does something. If you click on a link and FLiK opens a window or tab, training wheels will flash a message telling you what happened and why.  You can turn off training wheels once you get familiar with using FLiK</label>
+                        </div>
+
+                        <label for="autoHideNotifyCheck" class="autoFadeCheckBox">
+                            <input id="autoHideNotifyCheck"  type="checkbox"/> Automatically fade out FLiK notification after
+                            <input id="notifyDuration" type="number" min="5"> seconds.
+                        </label>
+                        <hr style="width:100%">
+                        <label for="default_monitor_ordering" class="main-label">Default monitor ordering
+                            <select id="default_monitor_ordering" class="main-select"></select>
+                        </label>
+                        <hr style="width:100%">
+                        <label for="band-font" class="main-label">Band fontfamily
+                            <select id="band-font" class="main-select"></select>
+                        </label>
+                        <div class="band-option-wrapper">
+                            <label for="show_label" class="second-label">
+                                <input id="show_label"  type="checkbox" /> Show label
+                            </label>
+                            <label for="show_rule" class="second-label">
+                                <input id="show_rule"  type="checkbox" /> Show rule
+                            </label>
+                            <label for="show_mode" class="second-label">
+                                <input id="show_mode"  type="checkbox" /> Show mode
+                            </label>
+                            <label for="show_domain" class="second-label">
+                                <input id="show_domain"  type="checkbox" /> Use domain for detail flik label (ie:"news" from www.news.com)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="Develop" style="display:none;">
+                    <div id="dev_wrapper">
+                        <button id="initProfile" class="dev-button" title="initialze profile">Init profile</button>
+                        <button id="syncProfile" class="dev-button" title="sync profile">Sync profile</button>
+                        <button id="unregisterDevice" class="dev-button" title="unregister device">Unregister device</button>
+                        <button id="clearServer" class="dev-button" title="clean devices on server">Clear server</button>
+                        <button id="downloadLogs" class="dev-button" title="download log file">Download Logs</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footerWrapper">
+            <label class="Footer-Text">Copyright 2020-2023 FireThief Inc. All rights reserved. Patent Pending</label>
+            <div id="changePendingBar" style="display: none;">
+                Your changes will be synced in : <span id="pending_time"> 30s </span> <a id="manual_sync">Sync now </a>
+            </div>
+        </div>
+
+        <div id="device_option_form">
+            <div id="optionDeviceWrapper">
+                <label for="optDeviceTitle">Title <input id="optDeviceTitle" type="text" placeholder="Type the title"/> </label>
+                <label>Border Style<select id="optDeviceBorder"> <option value="solid">Solid</option> <option value="dashed">Dashed</option> </select></label>
+                <label>Background Color<input type='text' name="optDeviceColorPicker" id="optDeviceColorPicker" /></label>
+                <label>Device Type<select id="optDeviceType"></select></label>
+            </div>
+        </div>
+    </div>
+
+    <div id="optionLayoutPreviewSlot" hidden></div>
+    <div id="services_wrapper" hidden></div>
+    <script src="../js/options.js"></script>
+</body>
+
+</html>

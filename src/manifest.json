@@ -1,0 +1,66 @@
+{
+    "author": "Data|Z",
+    "name": "FLiK-alpha",
+    "version": "2.2.1",
+    "description": "Open links in FLiK",
+    "homepage_url": "https://dataz.co",
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4xoobM1YRI3rZ09oefMpZJfktLgPATfrPUyHu0RNBriV7NMy0saKp3bm1caZ8K0hkZBWO3ZcozyCT8Ky/UOKVAbal83aKE7UiHeCu1eZQ2Kc5UC2DVkhuwqerN7doFEovCtuk9aNLL8gW34hh5z7AqhrpIOABpbkVRATYVGfNIx/EdSeZymnof0u3ZveGUqEeqXZkV+ObxqE4aOwN3Qu7OkJHvnMAzdJIzlpYm3p/3XhGsq/zD57g24ulrp+mdd93ikdyzvGdJO1YpOnuvZK59+rwE4tWyUt7qWEPa3FylBM5j5CLKC7T31PFaHx+cu6p7aKLgofR8uiDqdMGEfyhQIDAQAB",
+    "manifest_version": 3,
+    "minimum_chrome_version": "88",
+    "icons": {
+        "16": "img/icon16.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+    "action": {
+        "default_icon": "img/icon32.png",
+        "default_popup": "html/popup.html",
+        "default_title": "FLiK"
+    },
+    "options_page": "html/options.html",
+    "background": {
+        "service_worker": "service_worker.js",
+        "type": "module"
+    },
+    "content_scripts": [{
+        "run_at": "document_end",
+        "js": [
+            "js/content.js"
+        ],
+        "css": [
+            "css/flik.css",
+            "css/content.css"
+        ],
+        "matches": ["*://*/*"],
+        "all_frames": true
+    }],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "web_accessible_resources": [{
+        "resources": [
+            "img/*",
+            "html/*",
+            "js/*"
+        ],
+        "matches": [
+            "<all_urls>"
+        ]
+    }],
+    "permissions": [
+        "storage",
+        "tabs",
+        "activeTab",
+        "system.display",
+        "clipboardRead",
+        "clipboardWrite",
+        "management",
+        "scripting",
+        "downloads",
+        "idle"
+    ],
+    "host_permissions": [
+        "*://*/*",
+        "<all_urls>"
+    ]
+}

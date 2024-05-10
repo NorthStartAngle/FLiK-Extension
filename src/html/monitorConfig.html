@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Monitor Settings</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/flik.css" />
+    <link rel="stylesheet" href="../css/monitorConfig.css" />
+    <script src="../library/js/jquery-1.12.3.min.js"></script>
+</head>
+
+<body>
+    <div class="Monitor-Config-Wrapper">
+        <div class="Monitor-Config-Pane">
+            <div class="Monitor-Config-Header">
+                <div style="width: 70px; text-align-last: center;"> Order </div>
+                <div style="width:60px;">
+                    <select id="monitorOrder" style="width:60px;"><option>1st</option></select>
+                </div>
+                <div style="width: 149px;">
+                    <div class="PrimaryCaption">(Primary)</div>
+                </div>
+                <div style="width: 85px; text-align-last: center;"> Active </div>
+                <div style="width: 70px; margin-top: 25px;">
+                    <label class="useSwitch switch">
+                    <input type="checkbox" id="useThisSwitch" checked="">
+                    <span class="slider round"></span>
+                </label>
+                </div>
+            </div>
+            <div class="Monitor-Config-Body">
+                <div class="monitorID_edit">
+                    <select id="monitorIDSelector" style="width:50px; visibility:hidden;"></select>
+                    <img id="pencil" width="25px" height="25px" src="../img/pencil.png" style="cursor:pointer; margin-left: 10px;" />
+                </div>
+                <div class="monitorID_frame">
+                    <label id="monitorID" class="monitorIDCaption"></label>
+                </div>
+            </div>
+            <div class="Monitor-Config-Footer">
+                <div class="logoCaption">FLiK</div>
+                <div style="margin:auto;"></div>
+                <div>
+                    <div class="activateAll" id="activateAllDiv">
+                        <button id="activateAllSwitch">Activate all</button>
+                    </div>
+                </div>
+                <div>
+                    <button class="Monitor-Config-CloseBtn">× Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/monitorConfig.js"></script>
+</body>
+
+</html>

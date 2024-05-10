@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Notification</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/flik.css" />
+    <link rel="stylesheet" href="../css/notify.css" />
+    <script src="../library/js/jquery-1.12.3.min.js"></script>
+</head>
+
+<body>
+    <div class="popupBody">
+        <div class="monitor-layout" id="popupLayoutPreview" style="display:flex;"></div>
+        <div style = "margin-top: 10px;display: flex;flex-direction:column;">
+            <label for="autoHideNotifyCheck" class="autoFadeCheckBox" >
+                <input id="autoHideNotifyCheck"  type="checkbox" value="test" /> Automatically fade out in future
+            </label>
+            <p id="slot_infos" style="color: white;text-align: center;"></p>
+        </div>
+    </div>
+    <script src="../js/notify.js"></script>
+</body>
+
+</html>

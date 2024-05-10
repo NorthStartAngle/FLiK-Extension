@@ -1,0 +1,76 @@
+#flik_container_div {
+    display: flex;
+    flex-direction: row;
+    margin:5px;
+}
+
+.disabled_flik {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+#flik_slot_interface {
+    display: none;
+    position: absolute;
+    margin-left: 4px;
+    z-index: 99999999;
+    background-color: white;
+    border:2px solid #D66545;
+    flex-direction: row;
+}
+
+#contentLayoutWrapper{
+    display:flex;
+    direction: ltr;
+    flex-direction: column;
+}
+
+#flik_container_div .layout-device.offline{
+    pointer-events: none;
+}
+
+#flik_slot_interface #active_slot_url {
+    color: #0066ff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+#flik_slot_interface .slot-num-clicked {
+    pointer-events: none;
+}
+
+#flikEnable_layout{
+    color: #000;
+    height: 25px;
+    padding-top:10px;
+}
+
+#flikEnable_layout #chkContent{
+    margin-left: 10px;
+}
+
+#FLiK_Band {
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    z-index: 9999;
+    text-align: center;
+}
+
+#FLiK_Band .BandLogo {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    right: 10px;
+    bottom: 10px;
+    background:none;
+}
+
+#FLiK_Band .BandText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0px 10px;
+}
